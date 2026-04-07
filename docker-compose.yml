@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  fastapi-backend:
+    build: .
+    container_name: ropa-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # ผูกโฟลเดอร์ปัจจุบันของเครื่องเรา เข้ากับโฟลเดอร์ /app ใน Container
+      # (เพื่อให้ไฟล์ ropa.db ถูกเขียนลงบนเครื่องของเราโดยตรง)
+      - ./:/app
+    restart: unless-stopped
